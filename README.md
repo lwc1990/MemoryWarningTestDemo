@@ -1,1 +1,7 @@
 # MemoryWarningTestDemo
+这个demo主要是验证app在收到内存警告时，在didReceivedWarning方法里所做的处理，并学习loadView、viewDidLoad及viewDidUnload之间的关系。
+1、第一次访问UIViewController的view时，view为nil，然后会调用loadView方法创建view；
+2、view创建完毕后会调用viewDidLoad方法进行界面元素的初始化；
+3、当内存出现警告时，系统可能会释放UIViewController的view，将view赋值为nil，并调用viewDidUnload方法；
+4、当再次访问UIViewController的view时，view已经在3中被赋值为nil了，所以又会调用loadView方法重新创建view；
+5、view被重新创建完毕后，还是会调用viewDidLoad方法进行界面元素的初始化。
